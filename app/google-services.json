@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "55715712563",
+    "firebase_url": "https://coin160818.firebaseio.com",
+    "project_id": "coin160818",
+    "storage_bucket": "coin160818.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55715712563:android:ed5b53cdc1898c27",
+        "android_client_info": {
+          "package_name": "itcr.coin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55715712563-k48o1scruk3ijjo372o4b3tnggef6odc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgpwjyquexWBrs4z4-96XBSNFZiy_7wPA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
