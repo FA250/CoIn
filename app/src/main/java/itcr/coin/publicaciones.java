@@ -34,6 +34,7 @@ public class publicaciones extends AppCompatActivity {
 
 
 
+
         mainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
