@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_avisos"
+        android:icon="@drawable/outline_volume_down_white_24"
+        android:title="Avisos" />
+    <item
+        android:id="@+id/nav_recomendaciones"
+        android:icon="@drawable/outline_search_white_24"
+        android:title="Recomendaciones" />
+    <item
+        android:id="@+id/nav_reportes"
+        android:icon="@drawable/outline_videocam_white_24"
+        android:title="Reportes" />
+    <item
+        android:id="@+id/nav_configuraciones"
+        android:icon="@drawable/outline_settings_white_24"
+        android:title="Configuraciones" />
+</menu>

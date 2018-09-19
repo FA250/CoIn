@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorBlanco">#ffffff</color>
+    <color name="colorBlancoTrans">#80ffffff</color>
+    <color name="colorAvisos">#f21dd9</color>
+    <color name="colorRecomendaciones">#00bbff</color>
+    <color name="colorReportes">#24d121</color>
+    <color name="colorConfiguraciones">#ffd714</color>
 </resources>
