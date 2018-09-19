@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "55715712563-kt7nlrphnk11b1i7urli67cbpg9jm0ag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "itcr.coin",
+            "certificate_hash": "4301ba54a3305f6c0232ca4d8d060b4203d6b9a1"
+          }
+        },
+        {
           "client_id": "55715712563-k48o1scruk3ijjo372o4b3tnggef6odc.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55715712563-k48o1scruk3ijjo372o4b3tnggef6odc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
