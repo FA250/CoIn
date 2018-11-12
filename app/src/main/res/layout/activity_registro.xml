@@ -20,8 +20,9 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
-        --TODO agregar imagen
+        app:layout_constraintVertical_bias="0.521"
+        android:src="@drawable/logocoin"/>
+
 
     <EditText
         android:id="@+id/txtCorreo"
