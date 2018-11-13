@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -73,7 +74,7 @@ public class ComentariosActivity extends AppCompatActivity {
     }
 
     private void ActualizarComentarios(CollectionReference DB, String idDocumento){
-        DB.document(idDocumento).collection("Comentario")/*.orderBy(FieldPath.documentId(), com.google.firebase.firestore.Query.Direction.DESCENDING)*/.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        DB.document(idDocumento).collection("Comentario").orderBy("id",Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 ClaseComentario[] comentarios=new ClaseComentario[queryDocumentSnapshots.size()];

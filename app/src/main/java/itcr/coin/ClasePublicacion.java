@@ -3,6 +3,7 @@ package itcr.coin;
 import com.google.firebase.firestore.CollectionReference;
 
 public class ClasePublicacion {
+    public  String id;
     public String idUsuario;
     public String nombreUsuario;
     public String Titulo;
@@ -16,12 +17,14 @@ public class ClasePublicacion {
     public String dia;
     public String mes;
     public String anno;
+    public Boolean reporte;
 
     public ClasePublicacion() {
         super();
     }
 
     public ClasePublicacion(String idUsuario, String nombreUsuario, String Titulo, String Telefono, String Ubicacion, String Decripcion, String Horario, String segundos, String minuto, String hora, String dia, String mes, String anno) {
+        this.id=anno+mes+dia+hora+minuto+segundos;
         this.idUsuario=idUsuario;
         this.nombreUsuario=nombreUsuario;
         this.Titulo = Titulo;
@@ -35,11 +38,15 @@ public class ClasePublicacion {
         this.dia = dia;
         this.mes = mes;
         this.anno = anno;
+        this.reporte=false;
+    }
+
+    public void ActivarReporte(CollectionReference DB){
+        DB.document().update("reporte",true);
     }
 
     public boolean CrearPublicacion(CollectionReference DB){
         try {
-            String id = anno+mes+dia+hora+minuto+segundos;
             DB.document(id).set(this);
             return true;
         }

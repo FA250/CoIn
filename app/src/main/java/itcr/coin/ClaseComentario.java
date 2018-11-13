@@ -3,6 +3,7 @@ package itcr.coin;
 import com.google.firebase.firestore.CollectionReference;
 
 public class ClaseComentario {
+    public String id;
     public String NombreUsuario;
     public String Comentario;
     public String idUsuario;
@@ -14,6 +15,7 @@ public class ClaseComentario {
     public String anno;
 
     public ClaseComentario(String NombreUsuario,String Comentario,String idUsuario,String segundos, String minuto, String hora, String dia, String mes, String anno) {
+        this.id=anno+mes+dia+hora+minuto+segundos;
         this.NombreUsuario=NombreUsuario;
         this.Comentario=Comentario;
         this.idUsuario=idUsuario;
@@ -26,8 +28,7 @@ public class ClaseComentario {
     }
     public boolean AgregarComentario(CollectionReference DB,String idPublicacion){
         try {
-            String idComentario=anno+mes+dia+hora+minuto+segundos;
-            DB.document(idPublicacion).collection("Comentario").document(idComentario).set(this);
+            DB.document(idPublicacion).collection("Comentario").document(id).set(this);
             return true;
         }
         catch (Exception e){

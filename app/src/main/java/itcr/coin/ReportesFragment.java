@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -47,7 +48,7 @@ public class ReportesFragment extends Fragment {
     }
 
     private void ActualizarPublicaciones(CollectionReference DB) {
-        DB.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        DB.orderBy("id",Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 publicaciones=new ClasePublicacion[queryDocumentSnapshots.size()];
