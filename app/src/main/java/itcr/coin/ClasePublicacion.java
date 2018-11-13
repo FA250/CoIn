@@ -3,6 +3,8 @@ package itcr.coin;
 import com.google.firebase.firestore.CollectionReference;
 
 public class ClasePublicacion {
+    public String idUsuario;
+    public String nombreUsuario;
     public String Titulo;
     public int Telefono;
     public  String Ubicacion;
@@ -19,8 +21,9 @@ public class ClasePublicacion {
         super();
     }
 
-    public ClasePublicacion(String Titulo, int Telefono, String Ubicacion, String Decripcion, String Horario, int segundos, int minuto, int hora, int dia, int mes, int anno) {
-
+    public ClasePublicacion(String idUsuario, String nombreUsuario, String Titulo, int Telefono, String Ubicacion, String Decripcion, String Horario, int segundos, int minuto, int hora, int dia, int mes, int anno) {
+        this.idUsuario=idUsuario;
+        this.nombreUsuario=nombreUsuario;
         this.Titulo = Titulo;
         this.Telefono = Telefono;
         this.Ubicacion = Ubicacion;

@@ -1,5 +1,6 @@
 package itcr.coin;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,20 +19,23 @@ public class AgregarReporteIncidenteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_reporte_incidente);
-
         final CollectionReference Ref= FirebaseFirestore.getInstance().collection("Incidente");
 
-        Button btnAgregarRecomendacion= findViewById(R.id.btnAgregarI);
+        Intent i = getIntent();
+        final String nombreUsuario=i.getStringExtra("nombre");
+        final String correoUsuario=i.getStringExtra("correo");
 
-        btnAgregarRecomendacion.setOnClickListener(new View.OnClickListener() {
+        Button btnAgregarIncidente= findViewById(R.id.btnAgregarI);
+
+        btnAgregarIncidente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validacionCrearRecomendacion(Ref);
+                validacionCrearIncidente(Ref,nombreUsuario,correoUsuario);
             }
         });
     }
 
-    public void validacionCrearRecomendacion(CollectionReference DB) {
+    public void validacionCrearIncidente(CollectionReference DB, String nombreUsuario, String idUsuario) {
         EditText ETTitulo = findViewById(R.id.txtTitulo);
         EditText ETTelefono = findViewById(R.id.txtTelefono);
         EditText ETUbicacion = findViewById(R.id.txtUbicacion);
@@ -62,7 +66,7 @@ public class AgregarReporteIncidenteActivity extends AppCompatActivity {
             ProgressBar progressBar=new ProgressBar(this);
 
             progressBar.setVisibility(View.VISIBLE);
-            ClasePublicacion nuevoIncidente=new ClasePublicacion(ETTitulo.getText().toString(),Integer.parseInt(ETTelefono.getText().toString()),ETUbicacion.getText().toString(),ETDescripcion.getText().toString(),ETFecha.getText().toString()+";"+ETHorario.getText().toString(),getSecond(),getMinute(),getHour(),getDay(),getMonth(),getYear());
+            ClasePublicacion nuevoIncidente=new ClasePublicacion(idUsuario,nombreUsuario,ETTitulo.getText().toString(),Integer.parseInt(ETTelefono.getText().toString()),ETUbicacion.getText().toString(),ETDescripcion.getText().toString(),ETFecha.getText().toString()+";"+ETHorario.getText().toString(),getSecond(),getMinute(),getHour(),getDay(),getMonth(),getYear());
 
             nuevoIncidente.CrearPublicacion(DB);
 

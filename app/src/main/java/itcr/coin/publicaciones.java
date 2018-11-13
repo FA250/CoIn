@@ -2,6 +2,7 @@ package itcr.coin;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 public class publicaciones extends AppCompatActivity implements AvisosFragment.OnFragmentInteractionListener, ConfiguracionesFragment.OnFragmentInteractionListener,
@@ -29,9 +31,15 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publicaciones);
 
+        Intent i = getIntent();
+
+        final String nombre=i.getStringExtra("nombre");
+        final String correo=i.getStringExtra("correo");
+
         mainNav = (BottomNavigationView) findViewById(R.id.main_nav);
         mainFrame = (FrameLayout) findViewById(R.id.main_frame);
         fabAgregar = (FloatingActionButton) findViewById(R.id.fab);
+        fabAgregar.setVisibility(View.INVISIBLE);
 
         avisosFragment = new AvisosFragment();
         configuracionesFragment = new ConfiguracionesFragment();
@@ -41,9 +49,6 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
         setFragment(avisosFragment);
 
         //Colores en int
-
-        final int colorAvisos = Color.parseColor("#f21dd9");
-        final int colorConfiguraciones = Color.parseColor("#ffd714");
         final int colorRecomendaciones = Color.parseColor("#00bbff");
         final int colorReportes = Color.parseColor("#24d121");
 
@@ -56,29 +61,47 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
                     case R.id.nav_avisos:
                         mainNav.setItemBackgroundResource(R.color.colorAvisos);
                         setFragment(avisosFragment);
-                        fabAgregar.setBackgroundColor(colorAvisos);
-                        fabAgregar.setRippleColor(colorAvisos);
+                        fabAgregar.setVisibility(View.INVISIBLE);
                         return true;
 
                     case R.id.nav_configuraciones:
                         mainNav.setItemBackgroundResource(R.color.colorConfiguraciones);
                         setFragment(configuracionesFragment);
-                        fabAgregar.setBackgroundColor(colorConfiguraciones);
-                        fabAgregar.setRippleColor(colorConfiguraciones);
+                        fabAgregar.setVisibility(View.INVISIBLE);
                         return true;
 
                     case R.id.nav_recomendaciones:
                         mainNav.setItemBackgroundResource(R.color.colorRecomendaciones);
                         setFragment(recomendacionesFragment);
+                        fabAgregar.setVisibility(View.VISIBLE);
                         fabAgregar.setBackgroundColor(colorRecomendaciones);
                         fabAgregar.setRippleColor(colorRecomendaciones);
+                        fabAgregar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent i=new Intent(publicaciones.this,AgregarRecomendacionActivity.class);
+                                i.putExtra("correo",correo);
+                                i.putExtra("nombre",nombre);
+                                startActivity(i);
+                            }
+                        });
                         return true;
 
                     case R.id.nav_reportes:
                         mainNav.setItemBackgroundResource(R.color.colorReportes);
                         setFragment(reportesFragment);
+                        fabAgregar.setVisibility(View.VISIBLE);
                         fabAgregar.setBackgroundColor(colorReportes);
                         fabAgregar.setRippleColor(colorReportes);
+                        fabAgregar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent i=new Intent(publicaciones.this,AgregarReporteIncidenteActivity.class);
+                                i.putExtra("correo",correo);
+                                i.putExtra("nombre",nombre);
+                                startActivity(i);
+                            }
+                        });
                         return true;
 
                     default:

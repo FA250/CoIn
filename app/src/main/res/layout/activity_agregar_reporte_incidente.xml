@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AgregarReporteIncidente">
-
+    tools:context=".AgregarReporteIncidenteActivity">
     <EditText
         android:id="@+id/txtTitulo"
         android:layout_width="368dp"

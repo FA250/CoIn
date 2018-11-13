@@ -101,8 +101,12 @@ public class LoginActivity extends AppCompatActivity {
 
         if(usuario.Tipo!=1)
             Toast.makeText(this,"Los administradores o proveedores solo pueden ingresar desde la aplicación web",Toast.LENGTH_SHORT).show();
-        else //Abrir ventana principal
-            startActivity(new Intent(LoginActivity.this,publicaciones.class));
+        else { //Abrir ventana principal
+            Intent i=new Intent(LoginActivity.this, publicaciones.class);
+            i.putExtra("correo",usuario.Correo);
+            i.putExtra("nombre",usuario.Nombre);
+            startActivity(i);
+        }
     }
 
 
