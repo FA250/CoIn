@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void Ingresar(DocumentSnapshot snapshot){
-        Usuario usuario=new Usuario(snapshot.get("Nombre").toString(),snapshot.get("Correo").toString(),Integer.parseInt(snapshot.get("Tipo").toString()));
+        ClaseUsuario usuario=new ClaseUsuario(snapshot.get("Nombre").toString(),snapshot.get("Correo").toString(),Integer.parseInt(snapshot.get("Tipo").toString()));
 
         if(usuario.Tipo!=1)
             Toast.makeText(this,"Los administradores o proveedores solo pueden ingresar desde la aplicación web",Toast.LENGTH_SHORT).show();

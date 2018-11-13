@@ -27,8 +27,6 @@ public class Registro extends AppCompatActivity {
 
         final CollectionReference Ref= FirebaseFirestore.getInstance().collection("Usuario");
 
-
-
         Button btnRegistrarUsuario=findViewById(R.id.btnCrearCuenta);
 
         btnRegistrarUsuario.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +71,7 @@ public class Registro extends AppCompatActivity {
             ProgressBar progressBar=new ProgressBar(this);
 
             progressBar.setVisibility(View.VISIBLE);
-            Usuario nuevoUsuario=new Usuario(ETNombre.getText().toString(),ETCorreo.getText().toString(),ETContrasenna.getText().toString(),1);
+            ClaseUsuario nuevoUsuario=new ClaseUsuario(ETNombre.getText().toString(),ETCorreo.getText().toString(),ETContrasenna.getText().toString(),1);
 
             UserExist(DB,nuevoUsuario);
 
@@ -83,7 +81,7 @@ public class Registro extends AppCompatActivity {
     }
 
 
-    private void UserExist(final CollectionReference DB, final Usuario usuario){
+    private void UserExist(final CollectionReference DB, final ClaseUsuario usuario){
         DB.document(usuario.Correo).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -97,7 +95,7 @@ public class Registro extends AppCompatActivity {
         });
     }
 
-    private void CrearCuenta(CollectionReference DB, Usuario usuario){
+    private void CrearCuenta(CollectionReference DB, ClaseUsuario usuario){
         //Crear cuenta
         if(usuario.RegistrarUsuario(DB)){
             Toast.makeText(this,"Se ha registrado la cuenta",Toast.LENGTH_SHORT).show();
