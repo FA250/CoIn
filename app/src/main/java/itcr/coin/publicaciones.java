@@ -2,6 +2,7 @@ package itcr.coin;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-public class publicaciones extends AppCompatActivity {
+public class publicaciones extends AppCompatActivity implements AvisosFragment.OnFragmentInteractionListener, ConfiguracionesFragment.OnFragmentInteractionListener,
+        RecomendacionesFragment.OnFragmentInteractionListener, ReportesFragment.OnFragmentInteractionListener {
 
     private BottomNavigationView mainNav;
     private FrameLayout mainFrame;
@@ -32,6 +34,8 @@ public class publicaciones extends AppCompatActivity {
         recomendacionesFragment = new RecomendacionesFragment();
         reportesFragment = new ReportesFragment();
 
+        setFragment(avisosFragment);
+
 
 
 
@@ -41,22 +45,22 @@ public class publicaciones extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.nav_avisos:
                         mainNav.setItemBackgroundResource(R.color.colorAvisos);
-                        //setFragment(avisosFragment);
+                        setFragment(avisosFragment);
                         return true;
 
                     case R.id.nav_configuraciones:
                         mainNav.setItemBackgroundResource(R.color.colorConfiguraciones);
-                        //setFragment(configuracionesFragment);
+                        setFragment(configuracionesFragment);
                         return true;
 
                     case R.id.nav_recomendaciones:
                         mainNav.setItemBackgroundResource(R.color.colorRecomendaciones);
-                        //setFragment(recomendacionesFragment);
+                        setFragment(recomendacionesFragment);
                         return true;
 
                     case R.id.nav_reportes:
                         mainNav.setItemBackgroundResource(R.color.colorReportes);
-                        //setFragment(reportesFragment);
+                        setFragment(reportesFragment);
                         return true;
 
                     default:
@@ -71,9 +75,14 @@ public class publicaciones extends AppCompatActivity {
 
         android.support.v4.app.FragmentTransaction fragmentTran = getSupportFragmentManager().beginTransaction();
         fragmentTran.replace(R.id.main_frame, fragment);
-        fragmentTran.commit();
+        fragmentTran.commitNow();
 
 
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
