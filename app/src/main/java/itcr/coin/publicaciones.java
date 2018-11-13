@@ -2,9 +2,11 @@ package itcr.coin;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
     private ConfiguracionesFragment configuracionesFragment;
     private RecomendacionesFragment recomendacionesFragment;
     private  ReportesFragment reportesFragment;
+    private FloatingActionButton fabAgregar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
 
         mainNav = (BottomNavigationView) findViewById(R.id.main_nav);
         mainFrame = (FrameLayout) findViewById(R.id.main_frame);
+        fabAgregar = (FloatingActionButton) findViewById(R.id.fab);
 
         avisosFragment = new AvisosFragment();
         configuracionesFragment = new ConfiguracionesFragment();
@@ -36,6 +40,12 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
 
         setFragment(avisosFragment);
 
+        //Colores en int
+
+        final int colorAvisos = Color.parseColor("#f21dd9");
+        final int colorConfiguraciones = Color.parseColor("#ffd714");
+        final int colorRecomendaciones = Color.parseColor("#00bbff");
+        final int colorReportes = Color.parseColor("#24d121");
 
 
 
@@ -46,21 +56,29 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
                     case R.id.nav_avisos:
                         mainNav.setItemBackgroundResource(R.color.colorAvisos);
                         setFragment(avisosFragment);
+                        fabAgregar.setBackgroundColor(colorAvisos);
+                        fabAgregar.setRippleColor(colorAvisos);
                         return true;
 
                     case R.id.nav_configuraciones:
                         mainNav.setItemBackgroundResource(R.color.colorConfiguraciones);
                         setFragment(configuracionesFragment);
+                        fabAgregar.setBackgroundColor(colorConfiguraciones);
+                        fabAgregar.setRippleColor(colorConfiguraciones);
                         return true;
 
                     case R.id.nav_recomendaciones:
                         mainNav.setItemBackgroundResource(R.color.colorRecomendaciones);
                         setFragment(recomendacionesFragment);
+                        fabAgregar.setBackgroundColor(colorRecomendaciones);
+                        fabAgregar.setRippleColor(colorRecomendaciones);
                         return true;
 
                     case R.id.nav_reportes:
                         mainNav.setItemBackgroundResource(R.color.colorReportes);
                         setFragment(reportesFragment);
+                        fabAgregar.setBackgroundColor(colorReportes);
+                        fabAgregar.setRippleColor(colorReportes);
                         return true;
 
                     default:

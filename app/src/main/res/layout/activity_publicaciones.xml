@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".publicaciones">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="69dp"
+        android:layout_height="73dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="69dp"
+        android:src="@drawable/baseline_add_white_18"
+        app:backgroundTint="#f21dd9"
+        />
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/main_nav"
         android:layout_width="match_parent"
