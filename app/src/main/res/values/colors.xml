@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#47d4ff</color>
-    <color name="colorPrimaryDark">#0bb2e5</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorAccentDark">#f9206a</color>
+    <color name="colorPrimary">#f4f4f4</color>
+    <color name="colorPrimaryDark">#d8d8d8</color>
+    <color name="colorAccent">#636363</color>
+    <color name="colorAccentDark">#333333</color>
 
 
     <color name="colorBlanco">#ffffff</color>
     <color name="colorBlancoTrans">#80ffffff</color>
+    <color name="colorNegro">#000000</color>
     <color name="colorAvisos">#f21dd9</color>
     <color name="colorRecomendaciones">#00bbff</color>
     <color name="colorReportes">#24d121</color>
