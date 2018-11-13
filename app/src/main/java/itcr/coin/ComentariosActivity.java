@@ -6,16 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Calendar;
 
 
 public class ComentariosActivity extends AppCompatActivity {
+
+    ListView listComentarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,10 @@ public class ComentariosActivity extends AppCompatActivity {
         final EditText ETComentaio=findViewById(R.id.txtComentario);
 
         final CollectionReference DB= FirebaseFirestore.getInstance().collection(TipoPublicacion);
+
+        listComentarios=findViewById(R.id.listComentarios);
+
+        ActualizarComentarios(DB,idPublicacion);
 
         btnAgregarComentario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +70,31 @@ public class ComentariosActivity extends AppCompatActivity {
             Toast.makeText(this,"Ocurrió un error al agregar el comentario",Toast.LENGTH_LONG).show();
 
         progressBar.setVisibility(View.GONE);
+    }
+
+    private void ActualizarComentarios(CollectionReference DB, String idDocumento){
+        DB.document(idDocumento).collection("Comentario")/*.orderBy(FieldPath.documentId(), com.google.firebase.firestore.Query.Direction.DESCENDING)*/.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                ClaseComentario[] comentarios=new ClaseComentario[queryDocumentSnapshots.size()];
+                TextView NoPublicaciones=findViewById(R.id.labelNoComentarios);
+                if(queryDocumentSnapshots.size()>0)
+                    NoPublicaciones.setVisibility(View.INVISIBLE);
+                else
+                    NoPublicaciones.setVisibility(View.VISIBLE);
+
+                int cont=0;
+                for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    comentarios[cont]=new ClaseComentario(documentSnapshot.get("NombreUsuario").toString(),documentSnapshot.get("Comentario").toString(),documentSnapshot.get("idUsuario").toString(),documentSnapshot.get("segundos").toString(),
+                            documentSnapshot.get("minuto").toString(), documentSnapshot.get("hora").toString(),documentSnapshot.get("dia").toString(),documentSnapshot.get("mes").toString(),documentSnapshot.get("anno").toString());
+                    cont++;
+                }
+                CustomListComentario adapter = new CustomListComentario(ComentariosActivity.this, comentarios);
+
+                if(adapter!= null)
+                    listComentarios.setAdapter(adapter);
+            }
+        });
     }
 
     //---------------------- Obtener Fecha ---------------------------
