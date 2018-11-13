@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AgregarRecomendacionActivity">
+    tools:context=".AgregarReporteIncidente">
 
     <EditText
         android:id="@+id/txtTitulo"
@@ -55,9 +55,9 @@
         android:id="@+id/txtHorario"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="84dp"
         android:ems="10"
-        android:hint="Horario"
+        android:hint="Hora"
         android:inputType="time"
         app:layout_constraintStart_toStartOf="@+id/txtDireccion"
         app:layout_constraintTop_toBottomOf="@+id/txtDireccion" />
@@ -66,11 +66,23 @@
         android:id="@+id/botonAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="79dp"
+        android:layout_marginBottom="56dp"
+        android:background="#24d121"
         android:text="Agregar"
-        android:background="#47d4ff"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txtFecha"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Fecha"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/txtHorario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

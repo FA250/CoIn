@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Registro" />
-        <activity android:name=".AgregarRecomendacionActivity"></activity>
+        <activity android:name=".AgregarRecomendacionActivity" />
+        <activity android:name=".AgregarReporteIncidente"></activity>
     </application>
 
 </manifest>
