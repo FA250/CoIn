@@ -30,7 +30,7 @@ public class Usuario {
 
     public boolean RegistrarUsuario(CollectionReference DB){
         try {
-            DB.document(this.Correo.split("@")[0]).set(this);
+            DB.document(this.Correo.split("@")[0]+this.Correo.split("@")[1]).set(this);
             return true;
         }
         catch (Exception e){

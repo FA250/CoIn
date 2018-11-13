@@ -39,6 +39,7 @@
         app:srcCompat="@drawable/logocoin_dos" />
 
 
+
     <EditText
         android:id="@+id/txtCorreo"
         android:layout_width="333dp"

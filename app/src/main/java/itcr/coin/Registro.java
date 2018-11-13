@@ -80,6 +80,7 @@ public class Registro extends AppCompatActivity {
                 //Crear cuenta
                 if(nuevoUsuario.RegistrarUsuario(DB)){
                     Toast.makeText(this,"Se ha registrado la cuenta",Toast.LENGTH_SHORT).show();
+                    this.finish();
                 }
                 else{
                     Toast.makeText(this, "Ocurrio un error al registrar la cuenta", Toast.LENGTH_LONG).show();
@@ -95,7 +96,7 @@ public class Registro extends AppCompatActivity {
     DocumentSnapshot snapshot;
     private boolean UserExist(CollectionReference DB,String correo){
 
-        DB.document(correo.split("@")[0]).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DB.document(correo.split("@")[0]+correo.split("@")[1]).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 snapshot=task.getResult();
