@@ -76,36 +76,38 @@ public class Registro extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             Usuario nuevoUsuario=new Usuario(ETNombre.getText().toString(),ETCorreo.getText().toString(),ETContrasenna.getText().toString(),1);
 
-            if(!UserExist(DB,nuevoUsuario.Correo)){
-                //Crear cuenta
-                if(nuevoUsuario.RegistrarUsuario(DB)){
-                    Toast.makeText(this,"Se ha registrado la cuenta",Toast.LENGTH_SHORT).show();
-                    this.finish();
-                }
-                else{
-                    Toast.makeText(this, "Ocurrio un error al registrar la cuenta", Toast.LENGTH_LONG).show();
-                }
-            }else{
-                Toast.makeText(this,"Error: Ya existe un correo igual registrado",Toast.LENGTH_LONG).show();
-            }
+            UserExist(DB,nuevoUsuario);
+
             progressBar.setVisibility(View.GONE);
             //Toast.makeText(this,result,Toast.LENGTH_LONG).show();
         }
     }
 
-    DocumentSnapshot snapshot;
-    private boolean UserExist(CollectionReference DB,String correo){
 
-        DB.document(correo.split("@")[0]+correo.split("@")[1]).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+    private void UserExist(final CollectionReference DB, final Usuario usuario){
+        String idCorreo=usuario.Correo.split("@")[0]+usuario.Correo.split("@")[1];
+        DB.document(idCorreo).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                snapshot=task.getResult();
+                DocumentSnapshot snapshot=task.getResult();
+                if(snapshot != null && snapshot.exists())
+                    Toast.makeText(Registro.this,"Error: Ya existe un correo igual registrado",Toast.LENGTH_LONG).show();
+                else
+                    CrearCuenta(DB,usuario);
+
             }
         });
-        if(snapshot != null && snapshot.exists())
-            return true;
-        else
-            return false;
+    }
+
+    private void CrearCuenta(CollectionReference DB, Usuario usuario){
+        //Crear cuenta
+        if(usuario.RegistrarUsuario(DB)){
+            Toast.makeText(this,"Se ha registrado la cuenta",Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
+        else{
+            Toast.makeText(this, "Ocurrio un error al registrar la cuenta", Toast.LENGTH_LONG).show();
+        }
     }
 
 

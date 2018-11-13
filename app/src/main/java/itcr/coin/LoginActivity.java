@@ -62,57 +62,51 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //Boton ingresar
-    protected void VerificarUsuario(CollectionReference DB)  {
-        EditText ETCorreo = (EditText)findViewById(R.id.txtCorreo);
-        EditText ETContrasenna = (EditText)findViewById(R.id.txtContrasenna);
+    protected void VerificarUsuario(CollectionReference DB) {
+        EditText ETCorreo = (EditText) findViewById(R.id.txtCorreo);
+        EditText ETContrasenna = (EditText) findViewById(R.id.txtContrasenna);
 
-        if( ETCorreo.getText().toString().trim().length() == 0 ) {
+        if (ETCorreo.getText().toString().trim().length() == 0) {
             ETCorreo.setError("Ingrese el correo");
-        }
-        else  if(!isEmailValid(ETCorreo.getText().toString().trim())) {
+        } else if (!isEmailValid(ETCorreo.getText().toString().trim())) {
             ETCorreo.setError("Ingrese un correo válido");
-        }
-        else if(ETContrasenna.getText().toString().trim().length() == 0) {
+        } else if (ETContrasenna.getText().toString().trim().length() == 0) {
             ETContrasenna.setError("Ingrese la contraseña");
-        }
-        else {
+        } else {
 
             String correo = ETCorreo.getText().toString().trim();
             String contrasenna = ((EditText) findViewById(R.id.txtContrasenna)).getText().toString().trim();
 
-            if(UserExist(DB,correo,contrasenna)){
-                Usuario usuario=new Usuario(snapshot.get("Nombre").toString(),snapshot.get("Correo").toString(),(Integer) snapshot.get("Tipo"));
+            UserExist(DB, correo, contrasenna);
 
-                if(usuario.Tipo!=1)
-                    Toast.makeText(this,"Los administradores o proveedores solo pueden ingresar desde la aplicación web",Toast.LENGTH_SHORT).show();
-                else //Abrir ventana principal
-                    startActivity(new Intent(LoginActivity.this,publicaciones.class));
-
-            }else{
-                Toast.makeText(this,"Correo o contraseña incorrectos",Toast.LENGTH_SHORT).show();
-            }
             //Toast.makeText(this,result,Toast.LENGTH_LONG).show();
         }
     }
 
-    DocumentSnapshot snapshot;
-    private boolean UserExist(CollectionReference DB, String correo, final String contrasenna){
+    private void UserExist(CollectionReference DB, String correo, final String contrasenna){
 
         String idCorreo=correo.split("@")[0]+correo.split("@")[1];
         DB.document(idCorreo).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.getResult() != null && task.getResult().get("password").toString().equals(contrasenna))
-                    snapshot=task.getResult();
+                DocumentSnapshot snapshot=task.getResult();
+                if(snapshot != null && snapshot.exists() && snapshot.get("Password").toString().equals(contrasenna))
+                    Ingresar(task.getResult());
                 else
-                    snapshot=null;
+                    Toast.makeText(LoginActivity.this,"Correo o contraseña incorrectos",Toast.LENGTH_SHORT).show();
             }
         });
-        if(snapshot != null && snapshot.exists())
-            return true;
-        else
-            return false;
     }
+
+    private void Ingresar(DocumentSnapshot snapshot){
+        Usuario usuario=new Usuario(snapshot.get("Nombre").toString(),snapshot.get("Correo").toString(),Integer.parseInt(snapshot.get("Tipo").toString()));
+
+        if(usuario.Tipo!=1)
+            Toast.makeText(this,"Los administradores o proveedores solo pueden ingresar desde la aplicación web",Toast.LENGTH_SHORT).show();
+        else //Abrir ventana principal
+            startActivity(new Intent(LoginActivity.this,publicaciones.class));
+    }
+
 
 
 }
