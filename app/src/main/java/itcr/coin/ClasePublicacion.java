@@ -17,7 +17,7 @@ public class ClasePublicacion {
     public String dia;
     public String mes;
     public String anno;
-    public Boolean reporte;
+    public Boolean reportada;
 
     public ClasePublicacion() {
         super();
@@ -38,11 +38,11 @@ public class ClasePublicacion {
         this.dia = dia;
         this.mes = mes;
         this.anno = anno;
-        this.reporte=false;
+        this.reportada=false;
     }
 
     public void ActivarReporte(CollectionReference DB){
-        DB.document().update("reporte",true);
+        DB.document().update("reportada",true);
     }
 
     public boolean CrearPublicacion(CollectionReference DB){
