@@ -27,6 +27,8 @@ public class Registro extends AppCompatActivity {
 
         final CollectionReference Ref= FirebaseFirestore.getInstance().collection("Usuario");
 
+
+
         Button btnRegistrarUsuario=findViewById(R.id.btnCrearCuenta);
 
         btnRegistrarUsuario.setOnClickListener(new View.OnClickListener() {
@@ -50,9 +52,6 @@ public class Registro extends AppCompatActivity {
         EditText ETNombre = findViewById(R.id.txtNombre);
         EditText ETContrasenna = findViewById(R.id.txtContrasenna);
         EditText ETConfirmarContrasenna = findViewById(R.id.txtConfirmarContrasenna);
-
-        String result="";
-        //
 
 
         if( ETCorreo.getText().toString().length() == 0 ) {
@@ -85,8 +84,7 @@ public class Registro extends AppCompatActivity {
 
 
     private void UserExist(final CollectionReference DB, final Usuario usuario){
-        String idCorreo=usuario.Correo.split("@")[0]+usuario.Correo.split("@")[1];
-        DB.document(idCorreo).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DB.document(usuario.Correo).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot snapshot=task.getResult();

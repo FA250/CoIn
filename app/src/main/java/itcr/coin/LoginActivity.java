@@ -84,9 +84,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void UserExist(CollectionReference DB, String correo, final String contrasenna){
-
-        String idCorreo=correo.split("@")[0]+correo.split("@")[1];
-        DB.document(idCorreo).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DB.document(correo).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot snapshot=task.getResult();
