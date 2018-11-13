@@ -41,12 +41,12 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
 
     <EditText
-        android:id="@+id/txtDireccion"
+        android:id="@+id/txtDescripcion"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Dirección"
+        android:hint="Descripción"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/txtUbicacion"
         app:layout_constraintTop_toBottomOf="@+id/txtUbicacion" />
@@ -59,8 +59,8 @@
         android:ems="10"
         android:hint="Horario"
         android:inputType="time"
-        app:layout_constraintStart_toStartOf="@+id/txtDireccion"
-        app:layout_constraintTop_toBottomOf="@+id/txtDireccion" />
+        app:layout_constraintStart_toStartOf="@+id/txtDescripcion"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcion" />
 
     <Button
         android:id="@+id/botonAgregar"
