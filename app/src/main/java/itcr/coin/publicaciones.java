@@ -11,6 +11,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -76,6 +77,10 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
         final ColorStateList coloresRec = new ColorStateList(states, colorsRecomendaciones);
         final ColorStateList coloresRep = new ColorStateList(states, colorsReportes);
 
+        getSupportActionBar().setTitle(
+                Html.fromHtml("<font color='" + getResources().getColor(R.color.colorAvisos) + "'>"
+                        + "Avisos</font>"));
+
 
 
         mainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -86,12 +91,18 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
                         mainNav.setItemBackgroundResource(R.color.colorAvisos);
                         setFragment(avisosFragment);
                         fabAgregar.setVisibility(View.INVISIBLE);
+                        getSupportActionBar().setTitle(
+                                Html.fromHtml("<font color='" + getResources().getColor(R.color.colorAvisos) + "'>"
+                                        + "Avisos</font>"));
                         return true;
 
                     case R.id.nav_configuraciones:
                         mainNav.setItemBackgroundResource(R.color.colorConfiguraciones);
                         setFragment(configuracionesFragment);
                         fabAgregar.setVisibility(View.INVISIBLE);
+                        getSupportActionBar().setTitle(
+                                Html.fromHtml("<font color='" + getResources().getColor(R.color.colorConfiguraciones) + "'>"
+                                        + "Configuraciones</font>"));
                         return true;
 
                     case R.id.nav_recomendaciones:
@@ -99,6 +110,9 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
                         setFragment(recomendacionesFragment);
                         fabAgregar.setVisibility(View.VISIBLE);
                         fabAgregar.setBackgroundTintList(coloresRec);
+                        getSupportActionBar().setTitle(
+                                Html.fromHtml("<font color='" + getResources().getColor(R.color.colorRecomendaciones) + "'>"
+                                        + "Recomendaciones</font>"));
                         fabAgregar.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -115,6 +129,9 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
                         setFragment(reportesFragment);
                         fabAgregar.setVisibility(View.VISIBLE);
                         fabAgregar.setBackgroundTintList(coloresRep);
+                        getSupportActionBar().setTitle(
+                                Html.fromHtml("<font color='" + getResources().getColor(R.color.colorReportes) + "'>"
+                                        + "Reportes</font>"));
                         fabAgregar.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
