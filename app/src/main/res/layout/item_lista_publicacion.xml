@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TableRow>
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="210dp">
+
+            <TextView
+                android:id="@+id/txtUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="234dp"
+                android:layout_marginBottom="10dp"
+                android:text="Usuario"
+                app:layout_constraintBottom_toTopOf="@+id/txtTitulo"
+                app:layout_constraintEnd_toStartOf="@+id/txtUbicacion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="176dp"
+                android:layout_marginBottom="8dp"
+                android:text="Título"
+                app:layout_constraintBottom_toTopOf="@+id/txtDescripcion"
+                app:layout_constraintEnd_toStartOf="@+id/txtFecha" />
+
+            <TextView
+                android:id="@+id/txtHorario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="8dp"
+                android:text="Horario"
+                app:layout_constraintBottom_toTopOf="@+id/txtDescripcion"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/txtUbicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="234dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:text="Ubicación"
+                app:layout_constraintBottom_toTopOf="@+id/txtHorario"
+                app:layout_constraintStart_toEndOf="@+id/txtUsuario"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="31dp"
+                android:layout_marginBottom="8dp"
+                android:text="Fecha"
+                app:layout_constraintBottom_toTopOf="@+id/txtDescripcion"
+                app:layout_constraintEnd_toStartOf="@+id/txtHorario" />
+
+            <TextView
+                android:id="@+id/txtDescripcion"
+                android:layout_width="344dp"
+                android:layout_height="85dp"
+                android:layout_marginTop="7dp"
+                android:text="Descripción"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+
+            <ImageButton
+                android:id="@+id/btnSuscribirse"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="87dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/twotone_person_add_24"
+                app:layout_constraintEnd_toStartOf="@+id/btnComentar"
+                app:layout_constraintTop_toBottomOf="@+id/txtDescripcion" />
+
+            <ImageButton
+                android:id="@+id/btnComentar"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="96dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/twotone_comment_24"
+                app:layout_constraintEnd_toStartOf="@+id/btnReportar"
+                app:layout_constraintTop_toBottomOf="@+id/txtDescripcion" />
+
+            <ImageButton
+                android:id="@+id/btnReportar"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="24dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/twotone_report_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtDescripcion"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </TableRow>
+</TableLayout>
