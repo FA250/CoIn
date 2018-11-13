@@ -41,8 +41,8 @@ public class ClasePublicacion {
         this.reportada=false;
     }
 
-    public void ActivarReporte(CollectionReference DB){
-        DB.document().update("reportada",true);
+    public void ActivarReporte(CollectionReference DB, String ID){
+        DB.document(ID).update("reportada",true);
     }
 
     public boolean CrearPublicacion(CollectionReference DB){

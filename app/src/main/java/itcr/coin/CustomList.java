@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Calendar;
 
 public class CustomList extends ArrayAdapter {
@@ -56,14 +59,23 @@ public class CustomList extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 posicion=(Integer) v.getTag();
-                AbriComentarios();
+                AbrirComentarios();
+            }
+        });
+
+        btnReportar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CollectionReference DB=FirebaseFirestore.getInstance().collection(TipoPublicacion);
+                ClasePublicacion publicacion=new ClasePublicacion();
+                publicacion.ActivarReporte(DB,publicaciones[position].id);
             }
         });
 
         return rowView;
     }
 
-    private void AbriComentarios(){
+    private void AbrirComentarios(){
         Intent i= new Intent(context,ComentariosActivity.class);
         i.putExtra("idPublicacion",publicaciones[posicion].anno+publicaciones[posicion].mes+publicaciones[posicion].dia+publicaciones[posicion].hora+publicaciones[posicion].minuto+publicaciones[posicion].segundos);
         i.putExtra("nombreUsuario",publicaciones[posicion].nombreUsuario);
