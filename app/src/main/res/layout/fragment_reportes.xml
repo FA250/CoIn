@@ -7,8 +7,18 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/labelNoPublicacionesR"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="REPORTES" />
+        android:gravity="center"
+        android:textSize="25dp"
+        android:text="No existen publicaciones aún"
+        android:visibility="visible"/>
 
+    <ListView
+        android:id="@+id/listReportes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:dividerHeight="0dp">
+    </ListView>
 </FrameLayout>

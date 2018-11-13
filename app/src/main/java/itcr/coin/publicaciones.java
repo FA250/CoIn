@@ -135,13 +135,8 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
     };
 
     private void setFragment(android.support.v4.app.Fragment fragment){
-
-        android.support.v4.app.FragmentTransaction fragmentTran = getSupportFragmentManager().beginTransaction();
-        fragmentTran.replace(R.id.main_frame, fragment);
+        android.support.v4.app.FragmentTransaction fragmentTran = getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment);
         fragmentTran.commitNow();
-
-
-
     }
 
     @Override

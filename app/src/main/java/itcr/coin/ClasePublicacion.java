@@ -6,22 +6,22 @@ public class ClasePublicacion {
     public String idUsuario;
     public String nombreUsuario;
     public String Titulo;
-    public int Telefono;
-    public  String Ubicacion;
+    public String Telefono;
+    public String Ubicacion;
     public String Descripcion;
     public String Horario;
-    public int segundos;
-    public int minuto;
-    public int hora;
-    public int dia;
-    public int mes;
-    public int anno;
+    public String segundos;
+    public String minuto;
+    public String hora;
+    public String dia;
+    public String mes;
+    public String anno;
 
     public ClasePublicacion() {
         super();
     }
 
-    public ClasePublicacion(String idUsuario, String nombreUsuario, String Titulo, int Telefono, String Ubicacion, String Decripcion, String Horario, int segundos, int minuto, int hora, int dia, int mes, int anno) {
+    public ClasePublicacion(String idUsuario, String nombreUsuario, String Titulo, String Telefono, String Ubicacion, String Decripcion, String Horario, String segundos, String minuto, String hora, String dia, String mes, String anno) {
         this.idUsuario=idUsuario;
         this.nombreUsuario=nombreUsuario;
         this.Titulo = Titulo;
@@ -39,7 +39,7 @@ public class ClasePublicacion {
 
     public boolean CrearPublicacion(CollectionReference DB){
         try {
-            String id = Integer.toString(anno)+Integer.toString(mes)+Integer.toString(dia)+Integer.toString(hora)+Integer.toString(minuto)+Integer.toString(segundos);
+            String id = anno+mes+dia+hora+minuto+segundos;
             DB.document(id).set(this);
             return true;
         }

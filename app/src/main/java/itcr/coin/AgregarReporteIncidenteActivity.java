@@ -67,7 +67,7 @@ public class AgregarReporteIncidenteActivity extends AppCompatActivity {
             ProgressBar progressBar=new ProgressBar(this);
 
             progressBar.setVisibility(View.VISIBLE);
-            ClasePublicacion nuevoIncidente=new ClasePublicacion(idUsuario,nombreUsuario,ETTitulo.getText().toString(),Integer.parseInt(ETTelefono.getText().toString()),ETUbicacion.getText().toString(),ETDescripcion.getText().toString(),ETFecha.getText().toString()+";"+ETHorario.getText().toString(),getSecond(),getMinute(),getHour(),getDay(),getMonth(),getYear());
+            ClasePublicacion nuevoIncidente=new ClasePublicacion(idUsuario,nombreUsuario,ETTitulo.getText().toString(),ETTelefono.getText().toString(),ETUbicacion.getText().toString(),ETDescripcion.getText().toString(),ETFecha.getText().toString()+" - "+ETHorario.getText().toString(),getSecond(),getMinute(),getHour(),getDay(),getMonth(),getYear());
 
             if(nuevoIncidente.CrearPublicacion(DB)) {
                 Toast.makeText(this,"Se agrego la publicación",Toast.LENGTH_SHORT).show();
@@ -84,34 +84,34 @@ public class AgregarReporteIncidenteActivity extends AppCompatActivity {
 
 
     //---------------------- Obtener Fecha ---------------------------
-    private int getHour(){
+    private String getHour(){
         Calendar c = Calendar.getInstance();
-        int Hora = c.get(Calendar.HOUR_OF_DAY);
+        String Hora = Integer.toString(c.get(Calendar.HOUR_OF_DAY));
         return Hora;
     }
-    private int getMinute(){
+    private String getMinute(){
         Calendar c = Calendar.getInstance();
-        int Minuto = c.get(Calendar.MINUTE);
+        String Minuto = Integer.toString(c.get(Calendar.MINUTE));
         return Minuto;
     }
-    private int getDay(){
+    private String getDay(){
         Calendar c = Calendar.getInstance();
-        int Dia = c.get(Calendar.DAY_OF_MONTH);
+        String Dia = Integer.toString(c.get(Calendar.DAY_OF_MONTH));
         return Dia;
     }
-    private int getMonth(){
+    private String getMonth(){
         Calendar c = Calendar.getInstance();
-        int Mes = c.get(Calendar.MONTH)+1;
+        String Mes = Integer.toString(c.get(Calendar.MONTH)+1);
         return Mes;
     }
-    private int getYear(){
+    private String getYear(){
         Calendar c = Calendar.getInstance();
-        int Año = c.get(Calendar.YEAR);
+        String Año = Integer.toString(c.get(Calendar.YEAR));
         return Año;
     }
-    private int getSecond(){
+    private String getSecond(){
         Calendar c = Calendar.getInstance();
-        int Segundo = c.get(Calendar.SECOND);
+        String Segundo = Integer.toString(c.get(Calendar.SECOND));
         return Segundo;
     }
 }
