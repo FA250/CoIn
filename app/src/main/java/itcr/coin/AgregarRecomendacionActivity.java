@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -64,7 +65,13 @@ public class AgregarRecomendacionActivity extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             ClasePublicacion nuevaRecomendacion=new ClasePublicacion(idUsuario,nombreUsuario,ETTitulo.getText().toString(),Integer.parseInt(ETTelefono.getText().toString()),ETUbicacion.getText().toString(),ETDescripcion.getText().toString(),ETHorario.getText().toString(),getSecond(),getMinute(),getHour(),getDay(),getMonth(),getYear());
 
-            nuevaRecomendacion.CrearPublicacion(DB);
+            if(nuevaRecomendacion.CrearPublicacion(DB)) {
+                Toast.makeText(this,"Se agrego la publicación",Toast.LENGTH_SHORT).show();
+                this.finish();
+            }
+            else
+                Toast.makeText(this,"Ocurrió un error al agregar la publicación",Toast.LENGTH_LONG).show();
+
 
             progressBar.setVisibility(View.GONE);
             //Toast.makeText(this,result,Toast.LENGTH_LONG).show();
