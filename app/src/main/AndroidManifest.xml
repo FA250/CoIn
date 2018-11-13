@@ -24,7 +24,7 @@
         <activity android:name=".AgregarRecomendacionActivity" />
         <activity android:name=".AgregarReporteIncidente" />
         <activity android:name=".AgregarReporteIncidenteActivity" />
-        <activity android:name=".ComentariosActivity"></activity>
+        <activity android:name=".ComentariosActivity" />
     </application>
 
 </manifest>

@@ -64,7 +64,7 @@ public class RecomendacionesFragment extends Fragment {
                                                                 documentSnapshot.get("hora").toString(),documentSnapshot.get("dia").toString(),documentSnapshot.get("mes").toString(),documentSnapshot.get("anno").toString());
                     cont++;
                 }
-                CustomList adapter = new CustomList(getActivity(), publicaciones);
+                CustomList adapter = new CustomList(getActivity(), publicaciones, "Recomendacion");
 
                 if(adapter!= null)
                     ListaPublicaciones.setAdapter(adapter);

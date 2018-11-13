@@ -63,7 +63,7 @@ public class ReportesFragment extends Fragment {
                             documentSnapshot.get("hora").toString(),documentSnapshot.get("dia").toString(),documentSnapshot.get("mes").toString(),documentSnapshot.get("anno").toString());
                     cont++;
                 }
-                CustomList adapter = new CustomList(getActivity(), publicaciones);
+                CustomList adapter = new CustomList(getActivity(), publicaciones,"Incidente");
 
                 if(adapter!=null)
                     ListaPublicaciones.setAdapter(adapter);
