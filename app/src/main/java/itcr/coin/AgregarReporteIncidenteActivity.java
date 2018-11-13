@@ -19,9 +19,9 @@ public class AgregarReporteIncidenteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_reporte_incidente);
 
-        final CollectionReference Ref= FirebaseFirestore.getInstance().collection("Recomendacion");
+        final CollectionReference Ref= FirebaseFirestore.getInstance().collection("Incidente");
 
-        Button btnAgregarRecomendacion= findViewById(R.id.btnAgregarR);
+        Button btnAgregarRecomendacion= findViewById(R.id.btnAgregarI);
 
         btnAgregarRecomendacion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +37,7 @@ public class AgregarReporteIncidenteActivity extends AppCompatActivity {
         EditText ETUbicacion = findViewById(R.id.txtUbicacion);
         EditText ETDescripcion = findViewById(R.id.txtDescripcion);
         EditText ETHorario = findViewById(R.id.txtHorario);
+        EditText ETFecha = findViewById(R.id.txtFecha);
 
 
         if( ETTitulo.getText().toString().length() == 0 ) {
@@ -52,15 +53,18 @@ public class AgregarReporteIncidenteActivity extends AppCompatActivity {
             ETDescripcion.setError("Ingrese la descripcion");
         }
         else if(ETHorario.getText().toString().length() == 0) {
-            ETHorario.setError("Ingrese el horario");
+            ETHorario.setError("Ingrese la hora");
+        }
+        else if(ETFecha.getText().toString().length() == 0) {
+            ETHorario.setError("Ingrese la fecha");
         }
         else {
             ProgressBar progressBar=new ProgressBar(this);
 
             progressBar.setVisibility(View.VISIBLE);
-            ClasePublicacion nuevaRecomendacion=new ClasePublicacion(ETTitulo.getText().toString(),Integer.parseInt(ETTelefono.getText().toString()),ETUbicacion.getText().toString(),ETDescripcion.getText().toString(),ETHorario.getText().toString(),getSecond(),getMinute(),getHour(),getDay(),getMonth(),getYear());
+            ClasePublicacion nuevoIncidente=new ClasePublicacion(ETTitulo.getText().toString(),Integer.parseInt(ETTelefono.getText().toString()),ETUbicacion.getText().toString(),ETDescripcion.getText().toString(),ETFecha.getText().toString()+";"+ETHorario.getText().toString(),getSecond(),getMinute(),getHour(),getDay(),getMonth(),getYear());
 
-            nuevaRecomendacion.CrearPublicacion(DB);
+            nuevoIncidente.CrearPublicacion(DB);
 
             progressBar.setVisibility(View.GONE);
             //Toast.makeText(this,result,Toast.LENGTH_LONG).show();
