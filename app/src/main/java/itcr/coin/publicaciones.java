@@ -3,6 +3,7 @@ package itcr.coin;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -49,8 +50,31 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
         setFragment(avisosFragment);
 
         //Colores en int
-        final int colorRecomendaciones = Color.parseColor("#00bbff");
-        final int colorReportes = Color.parseColor("#24d121");
+
+
+        int[][] states = new int[][] {
+                new int[] { android.R.attr.state_enabled}, // enabled
+                new int[] {-android.R.attr.state_enabled}, // disabled
+                new int[] {-android.R.attr.state_checked}, // unchecked
+                new int[] { android.R.attr.state_pressed}  // pressed
+        };
+
+        int[] colorsRecomendaciones = new int[] {
+                Color.parseColor("#00bbff"),
+                Color.parseColor("#00bbff"),
+                Color.parseColor("#00bbff"),
+                Color.parseColor("#0298ce")
+        };
+
+        int[] colorsReportes= new int[] {
+                Color.parseColor("#24d121"),
+                Color.parseColor("#24d121"),
+                Color.parseColor("#24d121"),
+                Color.parseColor("#199117")
+        };
+
+        final ColorStateList coloresRec = new ColorStateList(states, colorsRecomendaciones);
+        final ColorStateList coloresRep = new ColorStateList(states, colorsReportes);
 
 
 
@@ -74,8 +98,7 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
                         mainNav.setItemBackgroundResource(R.color.colorRecomendaciones);
                         setFragment(recomendacionesFragment);
                         fabAgregar.setVisibility(View.VISIBLE);
-                        fabAgregar.setBackgroundColor(colorRecomendaciones);
-                        fabAgregar.setRippleColor(colorRecomendaciones);
+                        fabAgregar.setBackgroundTintList(coloresRec);
                         fabAgregar.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -91,8 +114,7 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
                         mainNav.setItemBackgroundResource(R.color.colorReportes);
                         setFragment(reportesFragment);
                         fabAgregar.setVisibility(View.VISIBLE);
-                        fabAgregar.setBackgroundColor(colorReportes);
-                        fabAgregar.setRippleColor(colorReportes);
+                        fabAgregar.setBackgroundTintList(coloresRep);
                         fabAgregar.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
