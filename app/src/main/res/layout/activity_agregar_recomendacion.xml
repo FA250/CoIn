@@ -6,4 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".AgregarRecomendacionActivity">
 
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Usuario (Correo)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtTelefono"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:hint="Teléfono"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="@+id/txtNombre"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+
+    <EditText
+        android:id="@+id/txtUbicacion"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="Ubicación"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/txtTelefono"
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
+
+    <EditText
+        android:id="@+id/txtDireccion"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Dirección"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/txtUbicacion"
+        app:layout_constraintTop_toBottomOf="@+id/txtUbicacion" />
+
+    <EditText
+        android:id="@+id/txtHorario"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Horario"
+        android:inputType="time"
+        app:layout_constraintStart_toStartOf="@+id/txtDireccion"
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccion" />
+
+    <Button
+        android:id="@+id/botonAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="79dp"
+        android:text="Agregar"
+        android:background="#47d4ff"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
