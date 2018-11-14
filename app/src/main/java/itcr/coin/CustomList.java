@@ -73,7 +73,7 @@ public class CustomList extends ArrayAdapter {
                 CollectionReference DB=FirebaseFirestore.getInstance().collection(TipoPublicacion);
                 ClasePublicacion publicacion=new ClasePublicacion();
                 publicacion.ActivarReporte(DB,publicaciones[position].id);
-                Toast.makeText(context,"Se ha reportado la publicación",Toast.LENGTH_SHORT);
+                Toast.makeText(context,"Se ha reportado la publicación",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -81,24 +81,15 @@ public class CustomList extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 CollectionReference DB=FirebaseFirestore.getInstance().collection("Usuario");
-                usuarioSuscrito USuscrito=new usuarioSuscrito(publicaciones[position].idUsuario,publicaciones[position].nombreUsuario);
-                DB.document(idUsuario).collection("Suscrito").document(USuscrito.correo).set(USuscrito);
-                Toast.makeText(context,"Se ha suscrito al usuario "+USuscrito.nombre,Toast.LENGTH_SHORT);
+                usuarioSuscribir USuscrito=new usuarioSuscribir(publicaciones[position].idUsuario,publicaciones[position].nombreUsuario);
+                USuscrito.suscribirse(DB,idUsuario,context);
             }
         });
 
         return rowView;
     }
 
-    private class usuarioSuscrito{
-        public String correo;
-        public String nombre;
 
-        public usuarioSuscrito(String correo, String nombre) {
-            this.correo=correo;
-            this.nombre=nombre;
-        }
-    }
 
     private void AbrirComentarios(){
         Intent i= new Intent(context,ComentariosActivity.class);
