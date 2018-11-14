@@ -9,38 +9,39 @@
 
         <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="210dp">
-
-            <TextView
-                android:id="@+id/txtUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="15dp"
-                android:text="Usuario"
-                app:layout_constraintBottom_toTopOf="@+id/txtTitulo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="220dp">
 
             <TextView
                 android:id="@+id/txtTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="Título"
                 android:textSize="18dp"
-                app:layout_constraintBottom_toTopOf="@+id/txtDescripcion"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintBottom_toTopOf="@+id/txtServicio"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtHorario"
+                android:id="@+id/txtServicio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Servicio"
+                app:layout_constraintBottom_toTopOf="@+id/txtDescripcion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+
+            <TextView
+                android:id="@+id/txtFechaFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
                 android:layout_marginBottom="4dp"
-                android:text="Horario"
+                android:text="Fecha Final"
                 app:layout_constraintBottom_toTopOf="@+id/txtDescripcion"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -48,23 +49,21 @@
                 android:id="@+id/txtUbicacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="45dp"
                 android:text="Ubicación"
-                app:layout_constraintBottom_toTopOf="@+id/txtHorario"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.727" />
+                app:layout_constraintStart_toEndOf="@+id/txtServicio"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtDescripcion"
                 android:layout_width="344dp"
                 android:layout_height="85dp"
                 android:layout_marginStart="6dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="36dp"
                 android:text="Descripción"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
 
@@ -102,6 +101,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtDescripcion"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtFechaInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="13dp"
+                android:text="Fecha Inicio"
+                app:layout_constraintBottom_toTopOf="@+id/txtFechaFinal"
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
         </android.support.constraint.ConstraintLayout>
