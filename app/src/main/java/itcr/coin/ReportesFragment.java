@@ -25,6 +25,15 @@ public class ReportesFragment extends Fragment {
     TextView NoPublicaciones;
     ListView ListaPublicaciones;
 
+    static String Usuario,IdUsuario;
+
+    public static ReportesFragment newInstance(String usuario,String idUsuario) {
+        ReportesFragment fragment = new ReportesFragment();
+        Usuario=usuario;
+        IdUsuario=idUsuario;
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,7 +73,7 @@ public class ReportesFragment extends Fragment {
                             documentSnapshot.get("hora").toString(),documentSnapshot.get("dia").toString(),documentSnapshot.get("mes").toString(),documentSnapshot.get("anno").toString());
                     cont++;
                 }
-                CustomList adapter = new CustomList(getActivity(), publicaciones,"Incidente");
+                CustomList adapter = new CustomList(getActivity(), publicaciones,"Incidente",Usuario,IdUsuario);
 
                 if(adapter!=null)
                     ListaPublicaciones.setAdapter(adapter);

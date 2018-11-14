@@ -43,10 +43,10 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
         fabAgregar = (FloatingActionButton) findViewById(R.id.fab);
         fabAgregar.setVisibility(View.INVISIBLE);
 
-        avisosFragment = new AvisosFragment();
+        avisosFragment = new AvisosFragment().newInstance(nombre,correo);
         configuracionesFragment = new ConfiguracionesFragment();
-        recomendacionesFragment = new RecomendacionesFragment();
-        reportesFragment = new ReportesFragment();
+        recomendacionesFragment = new RecomendacionesFragment().newInstance(nombre,correo);
+        reportesFragment = new ReportesFragment().newInstance(nombre,correo);
 
         setFragment(avisosFragment);
 

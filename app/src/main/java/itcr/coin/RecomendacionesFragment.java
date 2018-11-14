@@ -26,6 +26,16 @@ public class RecomendacionesFragment extends Fragment {
     TextView NoPublicaciones;
     ListView ListaPublicaciones;
 
+    static String Usuario,IdUsuario;
+
+    public static RecomendacionesFragment newInstance(String usuario,String idUsuario) {
+        RecomendacionesFragment fragment = new RecomendacionesFragment();
+        Usuario=usuario;
+        IdUsuario=idUsuario;
+        return fragment;
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,7 +75,7 @@ public class RecomendacionesFragment extends Fragment {
                                                                 documentSnapshot.get("hora").toString(),documentSnapshot.get("dia").toString(),documentSnapshot.get("mes").toString(),documentSnapshot.get("anno").toString());
                     cont++;
                 }
-                CustomList adapter = new CustomList(getActivity(), publicaciones, "Recomendacion");
+                CustomList adapter = new CustomList(getActivity(), publicaciones, "Recomendacion",Usuario,IdUsuario);
 
                 if(adapter!= null)
                     ListaPublicaciones.setAdapter(adapter);
