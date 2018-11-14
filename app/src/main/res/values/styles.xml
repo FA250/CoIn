@@ -10,13 +10,6 @@
 
     </style>
 
-    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title." parent="@style/Base.TextAppearance.AppCompat">
-        <item name="android:textColor">@color/colorNegro</item>
-
-    </style>
-
-
-
     <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorAccent</item>

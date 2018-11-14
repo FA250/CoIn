@@ -40,11 +40,11 @@ public class CustomListAviso extends ArrayAdapter {
         TextView txtFechaFinal= rowView.findViewById(R.id.txtFechaFinal);
         TextView txtServicio= rowView.findViewById(R.id.txtServicio);
 
-        ImageButton btnSuscribirse= rowView.findViewById(R.id.btnSuscribirse);
+        //ImageButton btnSuscribirse= rowView.findViewById(R.id.btnSuscribirse);
         ImageButton btnComentar= rowView.findViewById(R.id.btnComentar);
         ImageButton btnReportar= rowView.findViewById(R.id.btnReportar);
 
-        btnSuscribirse.setTag(position);
+        //btnSuscribirse.setTag(position);
         btnComentar.setTag(position);
         btnReportar.setTag(position);
 
@@ -64,7 +64,7 @@ public class CustomListAviso extends ArrayAdapter {
             }
         });
 
-        btnReportar.setOnClickListener(new View.OnClickListener() {
+       btnReportar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CollectionReference DB=FirebaseFirestore.getInstance().collection("Anuncio");

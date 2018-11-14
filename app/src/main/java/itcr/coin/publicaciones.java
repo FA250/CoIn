@@ -102,7 +102,7 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
                         fabAgregar.setVisibility(View.INVISIBLE);
                         getSupportActionBar().setTitle(
                                 Html.fromHtml("<font color='" + getResources().getColor(R.color.colorConfiguraciones) + "'>"
-                                        + "Configuraciones</font>"));
+                                        + "Subscripciones</font>"));
                         return true;
 
                     case R.id.nav_recomendaciones:

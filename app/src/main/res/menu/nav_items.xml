@@ -16,6 +16,6 @@
         android:title="Reportes" />
     <item
         android:id="@+id/nav_configuraciones"
-        android:icon="@drawable/outline_settings_white_24"
-        android:title="Configuraciones" />
+        android:icon="@drawable/outline_star_border_24"
+        android:title="Subscripciones" />
 </menu>
