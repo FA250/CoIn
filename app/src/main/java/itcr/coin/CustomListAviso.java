@@ -24,6 +24,8 @@ public class CustomListAviso extends ArrayAdapter {
         super(context, R.layout.item_lista_aviso, publicaciones);
         this.context = context;
         this.publicaciones = publicaciones;
+        this.Usuario = Usuario;
+        this.idUsuario = idUsuario;
     }
 
     @Override
