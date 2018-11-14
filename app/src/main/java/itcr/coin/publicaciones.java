@@ -16,14 +16,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
-public class publicaciones extends AppCompatActivity implements AvisosFragment.OnFragmentInteractionListener, ConfiguracionesFragment.OnFragmentInteractionListener,
+public class publicaciones extends AppCompatActivity implements AvisosFragment.OnFragmentInteractionListener, SuscripcionesFragment.OnFragmentInteractionListener,
         RecomendacionesFragment.OnFragmentInteractionListener, ReportesFragment.OnFragmentInteractionListener {
 
     private BottomNavigationView mainNav;
     private FrameLayout mainFrame;
 
     private  AvisosFragment avisosFragment;
-    private ConfiguracionesFragment configuracionesFragment;
+    private SuscripcionesFragment configuracionesFragment;
     private RecomendacionesFragment recomendacionesFragment;
     private  ReportesFragment reportesFragment;
     private FloatingActionButton fabAgregar;
@@ -44,7 +44,7 @@ public class publicaciones extends AppCompatActivity implements AvisosFragment.O
         fabAgregar.setVisibility(View.INVISIBLE);
 
         avisosFragment = new AvisosFragment().newInstance(nombre,correo);
-        configuracionesFragment = new ConfiguracionesFragment();
+        configuracionesFragment = new SuscripcionesFragment().newInstance(nombre,correo);
         recomendacionesFragment = new RecomendacionesFragment().newInstance(nombre,correo);
         reportesFragment = new ReportesFragment().newInstance(nombre,correo);
 

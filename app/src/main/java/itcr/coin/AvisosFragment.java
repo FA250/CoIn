@@ -58,7 +58,7 @@ public class AvisosFragment extends Fragment {
     }
 
     private void ActualizarPublicaciones(CollectionReference DB) {
-        DB/*.orderBy("id",Query.Direction.DESCENDING)*/.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        DB.orderBy("ID",Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 publicaciones=new ClaseAviso[queryDocumentSnapshots.size()];

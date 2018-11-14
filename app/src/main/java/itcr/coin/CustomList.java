@@ -70,7 +70,11 @@ public class CustomList extends ArrayAdapter {
         btnReportar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CollectionReference DB=FirebaseFirestore.getInstance().collection(TipoPublicacion);
+                CollectionReference DB;
+                if(TipoPublicacion==null)
+                    DB=FirebaseFirestore.getInstance().collection(publicaciones[position].getTipo());
+                else
+                    DB=FirebaseFirestore.getInstance().collection(TipoPublicacion);
                 ClasePublicacion publicacion=new ClasePublicacion();
                 publicacion.ActivarReporte(DB,publicaciones[position].id);
                 Toast.makeText(context,"Se ha reportado la publicación",Toast.LENGTH_SHORT).show();
@@ -96,7 +100,10 @@ public class CustomList extends ArrayAdapter {
         i.putExtra("idPublicacion",publicaciones[posicion].anno+publicaciones[posicion].mes+publicaciones[posicion].dia+publicaciones[posicion].hora+publicaciones[posicion].minuto+publicaciones[posicion].segundos);
         i.putExtra("nombreUsuario",Usuario);
         i.putExtra("idUsuario",idUsuario);
-        i.putExtra("TipoPublicacion",TipoPublicacion);
+        if(TipoPublicacion==null)
+            i.putExtra("TipoPublicacion",publicaciones[posicion].getTipo());
+        else
+            i.putExtra("TipoPublicacion",TipoPublicacion);
         getContext().startActivity(i);
     }
 }
